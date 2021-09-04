@@ -1,28 +1,42 @@
 package com.swaglabs.stepdefinition;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
+import com.swaglabs.resources.Commonactions;
+
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Hooks {
+public class Hooks extends Commonactions {
 	
-	public static WebDriver driver;
+	
 	
 	@Before
 	
 	public void login_to_the_application() throws InterruptedException {
-	    WebDriverManager.chromedriver().setup();
-	    driver = new ChromeDriver();
-	    driver.manage().window().maximize();
-	    driver.get("https://www.saucedemo.com/");
-	    Thread.sleep(2000);
+	   Commonactions c = new Commonactions();
+	   c.login("https://www.saucedemo.com/");
+		
 	      
 	}
-	@After
-	public void After_method() {
-		//driver.quit();
+	
+		@After
+		public void afterscenario(Scenario scenario){
+			
+			//driver.close();
+			if(scenario.isFailed()){
+
+				final byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+
+				scenario.embed(screenshot, "image/png");
+			}else{
+				scenario.embed(((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES), "image/png");
+
+			}
+			
+		
+
 	}
 }

@@ -12,8 +12,8 @@ import cucumber.api.junit.Cucumber;
 		plugin = "html:target",
 		monochrome = true,
 		dryRun =  false,
-		//tags = "@TestC"
-		tags = "@login,@TestC"
+		
+		tags = "@TestA"
 		
 		)
 
