@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.swaglabs.stepdefinition.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.447 s - in com.swaglabs.stepdefinition.TestRunner

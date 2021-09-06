@@ -9,7 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features=".//src//test//resources//Login.feature",
 		glue = "com.swaglabs.stepdefinition",
-		plugin = "html:target",
+		plugin = {"html:target","json:target/reports.json"},
 		monochrome = true,
 		dryRun =  false,
 		
